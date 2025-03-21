@@ -10,8 +10,8 @@ import Google from "next-auth/providers/google"
 export const { handlers, signIn, signOut, auth } = NextAuth({
     adapter: PrismaAdapter(prisma),
     session: { strategy: "jwt",},
-    
     pages: { signIn: "/login" },
+
     providers: [
         GitHub({
             profile: (profile) => ({
@@ -23,6 +23,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 role: 'user'
             })
         }),
+
         Google,
         Credentials({
             credentials: {
