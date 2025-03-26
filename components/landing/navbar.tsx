@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import NavUserSkeleton from "../stocks/nav-user-skeleton";
+import NavUserSkeleton from "@/components/stocks/nav-user-skeleton";
 import {
   DropdownMenu,
   DropdownMenuContent,
