@@ -2,7 +2,7 @@
 import React from "react";
 import { useFormStatus } from "react-dom";
 import { Button } from "@/components/ui/button";
-import Loading from "../ui/loading";
+import Loading from "@/components/ui/loading";
 
 
 /**

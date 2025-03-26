@@ -1,4 +1,4 @@
-// Dependencies: pnpm install @remixicon/react
+// Dependencies: npm install @remixicon/react
 
 import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
