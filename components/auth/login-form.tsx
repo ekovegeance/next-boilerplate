@@ -14,6 +14,7 @@ import {
 import { useActionState } from "react";
 import InputError from "@/components/stocks/input-error";
 import ButtonSubmit from "@/components/stocks/button-submit";
+import InputShowPassword from '@/components/stocks/input-show-password';
 
 export function LoginForm() {
   const searchParams = useSearchParams(); // Hook for getting the search parameters
@@ -42,7 +43,7 @@ export function LoginForm() {
         )}
 
         <div className="grid gap-2">
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email">Email Address</Label>
           <Input
             id="email"
             type="email"
@@ -53,17 +54,14 @@ export function LoginForm() {
         </div>
 
         <div className="grid gap-2">
-          <div className="flex items-center">
-            <Label htmlFor="password">Password</Label>
-            <Link
+          <InputShowPassword label="Password" name="password"/>
+          <InputError message={state?.error?.password} />
+          <Link
               href="/forgot-password"
               className="ml-auto inline-block text-sm underline"
             >
-              Forgot your password?
+              Forgot password?
             </Link>
-          </div>
-          <Input id="password" type="password" name="password" />
-          <InputError message={state?.error?.password} />
         </div>
 
         <ButtonSubmit submitting="Login" submit="Login" />
