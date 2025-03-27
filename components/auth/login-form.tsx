@@ -7,10 +7,13 @@ import { TriangleAlert } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Label } from "@/components/ui/label";
 import { loginCredentials } from "@/actions/auth.action";
-import SubmitButton from "@/components/stocks/submit-button";
-import { LoginWithGithub, LoginWithGoogle } from "@/components/stocks/button-oauth";
+import {
+  LoginWithGithub,
+  LoginWithGoogle,
+} from "@/components/stocks/button-oauth";
 import { useActionState } from "react";
-import InputError from "@/components/input-error";
+import InputError from "@/components/stocks/input-error";
+import ButtonSubmit from "@/components/stocks/button-submit";
 
 export function LoginForm() {
   const searchParams = useSearchParams(); // Hook for getting the search parameters
@@ -46,9 +49,6 @@ export function LoginForm() {
             placeholder="m@example.com"
             name="email"
           />
-          {state?.error?.email && (
-            <Label className="text-destructive">{state.error.email}</Label>
-          )}
           <InputError message={state?.error?.email} />
         </div>
 
@@ -63,12 +63,10 @@ export function LoginForm() {
             </Link>
           </div>
           <Input id="password" type="password" name="password" />
-          {state?.error?.password && (
-            <Label className="text-destructive">{state.error.password}</Label>
-          )}
+          <InputError message={state?.error?.password} />
         </div>
 
-        <SubmitButton submitting="Login" submit="Login" />
+        <ButtonSubmit submitting="Login" submit="Login" />
         <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
           <span className="relative z-10 bg-background px-2 text-muted-foreground">
             Or continue with

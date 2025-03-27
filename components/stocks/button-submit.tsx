@@ -17,7 +17,7 @@ import Loading from "@/components/ui/loading";
  *  
  */
 
-export default function SubmitButton({
+export default function ButtonSubmit({
   submitting,
   submit,
 }: {
