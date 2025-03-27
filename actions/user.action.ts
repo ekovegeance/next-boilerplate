@@ -18,11 +18,7 @@ export const getUsers = async (): Promise<User[]> => {
                 role: true,
             },
         });
-        if (!users || users.length === 0) {
-            throw new Error('No users found');
-        }
-        return users;
-
+        return users || [];
     } catch (error) {
         throw new Error('Failed to fetch users');
     }
