@@ -31,8 +31,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 Modern Javascript Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Prisma ORM](https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-typescript-postgresql) - PostgreSQL
+- [Next.js App Router](https://nextjs.org/docs/app/building-your-application) - learn about Next.js features and API.
+- [Prisma ORM](https://www.prisma.io/docs/guides/nextjs) - PostgreSQL
 - [Auth JS](https://authjs.dev/getting-started) - Credentials Providers
 - [Dependencies/ third party library](https://github.com/ekovegeance/Fullstack-Nextjs-Templates/blob/main/package.json)
 

@@ -41,7 +41,7 @@ export function RegisterForm() {
           <InputError message={state?.error?.email} />
         </div>
         <div className="grid gap-2">
-          <InputStrongPassword label="Password" />
+          <InputStrongPassword label="Password" name="password" />
           <InputError className="-mt-4" message={state?.error?.password} />
         </div>
         <div className="grid gap-2">
