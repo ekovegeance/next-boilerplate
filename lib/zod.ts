@@ -41,9 +41,8 @@ export const forgotPasswordSchema = object({
   email: string().email("Invalid email address"),
 });
 
-// Profile
-export const profileSchema = object({
-  username: string().min(2, "username must be at least 2 characters"),
+// Settings Profile
+export const settingsProfileSchema = object({
   name: string()
     .min(2, {
       message: "Name must be at least 2 characters.",
@@ -54,10 +53,5 @@ export const profileSchema = object({
   email: string({
     required_error: "Please select an email to display.",
   }).email(),
-  phone: string().min(2, { message: "Phone number must be at least 2 characters." }),
-  address: string().min(2, { message: "Address must be at least 2 characters." }),
-  password: string({
-    required_error: "Please select an password to display.",
-  }),
 
 });
