@@ -21,6 +21,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -34,7 +35,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             {children}
-            <Toaster />
+            <Toaster richColors />
           </ThemeProvider>
         </SessionProvider>
       </body>

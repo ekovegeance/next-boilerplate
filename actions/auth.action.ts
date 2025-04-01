@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-
-'use server'
+"use server"
 
 import { registerSchema, loginSchema, forgotPasswordSchema } from "@/lib/zod";
 import { hashSync } from "bcrypt-ts";

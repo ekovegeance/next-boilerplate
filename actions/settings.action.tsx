@@ -1,41 +1,32 @@
 "use server";
 
+import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { settingsProfileSchema } from "@/lib/zod";
-import { revalidatePath } from "next/cache";
-import { auth } from "@/auth";
 
-export const updateProfile = async (prevState: unknown, formData: FormData) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function updateProfile(prevState: any, formData: FormData) {
+  const session = await auth();
+  if (!session?.user) {
+    return { error: "Unauthorized" };
+  }
+  const validationFields = settingsProfileSchema.safeParse(Object.fromEntries(formData.entries()));
 
-    const session = await auth();
-    const validatedFields = settingsProfileSchema.safeParse(
-        Object.fromEntries(formData.entries())
-    );
-
-  if (!validatedFields.success) {
-    return {
-      error: validatedFields.error.flatten().fieldErrors,
-    };
+  if (!validationFields.success) {
+    return { errors: validationFields.error.flatten().fieldErrors };
   }
 
-  const { name, email } = validatedFields.data;
+  const { name, email } = validationFields.data;
 
   try {
-     await prisma.user.update({
-      where: {
-        id: session?.user.id ?? "",
-      },
-      data: {
-        name,
-        email,
-      },
+    const updatedUser = await prisma.user.update({
+      where: { id: session.user.id },
+      data: { name, email },
     });
-    revalidatePath("/settings/profile");
-    return { success: "updated"};
 
+    return { success: "Profile updated successfully!", user: updatedUser };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
-    console.error("Prisma Update Error:", error);
-    return { message: "An error occurred while updating the user." };
+    return { error: "Email already exists" };
   }
-};
-
+}

@@ -1,85 +1,73 @@
 "use client";
 
+import { useActionState } from "react";
 import { updateProfile } from "@/actions/settings.action";
-import HeadingSmall from "@/components/heading-small";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import React, { useActionState } from "react";
-import InputError from '@/components/stocks/input-error';
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { TriangleAlert } from "lucide-react";
 import { useSession } from "next-auth/react";
-import { Transition } from '@headlessui/react';
+import InputError from "@/components/stocks/input-error";
+import ButtonSubmit from "@/components/stocks/button-submit";
 
+export default function ProfilePage() {
+  const { data: session, update } = useSession();
 
+  const [state, formAction] = useActionState(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async (prevState: any, formData: FormData) => {
+      const result = await updateProfile(prevState, formData);
 
-export default   function ProfilePage() {
-
-const  {data: session} = useSession();
-
-  const [state, formAction] = useActionState(updateProfile, null);
+      if (result?.success && result?.user) {
+        await update({
+          user: {
+            ...session?.user,
+            name: result?.user?.name,
+            email: result?.user?.email,
+          },
+        });
+      }
+      return result;
+    },
+    null
+  );
 
   return (
     <div className="space-y-6">
-      <HeadingSmall
-        title="Profile information"
-        description="Update your name and email address"
-      />
+      <h2 className="text-xl font-semibold">Profile Information</h2>
+      <p className="text-gray-600">Update your name and email address</p>
 
       <form action={formAction} className="space-y-6">
-      {state?.message && (
-          <Alert variant="destructive" className="my-3">
-            <TriangleAlert />
-            <AlertTitle className="font-semibold">Woops!</AlertTitle>
-            <AlertDescription>{state.message}</AlertDescription>
-          </Alert>
-        )}
         <div className="grid gap-2">
           <Label htmlFor="name">Name</Label>
-
           <Input
             id="name"
             type="text"
             name="name"
-            className="mt-1 block w-full"
-            required
-            autoComplete="name"
-            placeholder="Name"
-           defaultValue={session?.user?.name ?? ''}
+            defaultValue={session?.user?.name || ""}
           />
-
-          <InputError className="mt-2" message={state?.error?.name} />
+          <InputError message={state?.errors?.name} />
         </div>
 
         <div className="grid gap-2">
           <Label htmlFor="email">Email address</Label>
-
           <Input
             id="email"
             type="email"
             name="email"
-            className="mt-1 block w-full"
-            required
-            autoComplete="username"
-            placeholder="Email address"
-            defaultValue={session?.user?.email ?? ''}
+            defaultValue={session?.user?.email || ""}
           />
-
-          <InputError className="mt-2" message={state?.error?.email} />
+          <InputError message={state?.errors?.email} />
         </div>
-
-        <div className="flex items-center gap-4">
-          <Button>Save</Button>
-          <Transition
-                show={state?.success === "updated"}
-                enter="transition ease-in-out"
-                enterFrom="opacity-0"
-                leave="transition ease-in-out"
-                leaveTo="opacity-0"
-            >
-                <p className="text-sm text-neutral-600">Saved</p>
-            </Transition>
+        {state?.error && (
+          <InputError
+            message={Array.isArray(state.error) ? state.error : [state.error]}
+          />
+        )}
+       
+        <div className="flex flex-row gap-2 items-center">
+        <ButtonSubmit submit="Save" submitting="Saving" />
+        {state?.success && (
+          <p className="text-muted-foreground text-sm">Saved</p>
+        )}
         </div>
       </form>
     </div>

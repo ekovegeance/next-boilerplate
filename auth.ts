@@ -10,6 +10,7 @@ import Google from "next-auth/providers/google";
 export const { handlers, signIn, signOut, auth } = NextAuth({
     adapter: PrismaAdapter(prisma) as NextAuthConfig["adapter"],
     session: { strategy: "jwt" },
+    basePath: "/api/auth",
     pages: { signIn: "/login" },
     providers: [
         GitHub({
@@ -33,19 +34,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 if (!validatedFields.success) {
                     return null;
                 }
-                
                 const { email, password } = validatedFields.data;
                 const user = await prisma.user.findUnique({ where: { email } });
-                
+
                 if (!user || !user.password) {
                     throw new Error("No user found");
                 }
-                
+
                 const passwordMatch = compareSync(password, user.password);
                 if (!passwordMatch) {
                     return null;
                 }
-                
+
                 return {
                     id: user.id,
                     name: user.name,
@@ -78,11 +78,21 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             }
             return true;
         },
-        jwt({ token, user }) {
+
+        jwt({ token, trigger, user, session }) {
+            if (trigger === "update" && session?.user) {
+                token.name = session.user.name;
+                token.username = session.user.username;
+                token.role = session.user.role;
+                token.avatar = session.user.avatar;
+                token.email = session.user.email;
+            }
             if (user) {
                 token.sub = user.id ?? '';
                 token.role = user.role ?? '';
                 token.username = user.username ?? '';
+                token.avatar = user.avatar ?? '';
+                token.email = user.email ?? '';
             }
             return token;
         },
@@ -90,9 +100,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             if (session.user) {
                 session.user.id = token.sub!;
                 session.user.username = token.username;
-                session.user.role = token.role;
+                session.user.role = token.role ?? '';
+                session.user.avatar = token.avatar ?? '';
+                session.user.email = token.email ?? '';
             }
             return session;
-        },
-    }
+        }
+    },
 });
