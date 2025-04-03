@@ -55,3 +55,23 @@ export const settingsProfileSchema = object({
   }).email(),
 
 });
+
+// Delete User
+export const deleteUserSchema = object({
+  password: string().min(6, "Password must be more than 6 characters"),
+})
+
+// Update Password
+export const updatePasswordSchema = object({
+  currentPassword: string().min(6, "Password must be more than 6 characters"),
+  newPassword: string()
+    .min(6, "Password must be more than 6 characters")
+    .max(32, "Password must be less than 32 characters"),
+  confirmPassword: string()
+    .min(6, "Password must be more than 6 characters")
+    .max(32, "Password must be less than 32 characters"),
+}).refine((data) => data.newPassword === data.confirmPassword, {
+  message: "Passwords do not match",
+  path: ["confirmPassword"],
+
+})

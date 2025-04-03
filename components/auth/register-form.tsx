@@ -1,22 +1,23 @@
 "use client";
 
 import Link from "next/link";
+import { useActionState } from "react";
+
 import { TriangleAlert } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { registerCredentials } from "@/actions/auth.action";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { useActionState } from "react";
 import InputError from "@/components/stocks/input-error";
+import { registerCredentials } from "@/actions/auth.action";
 import ButtonSubmit from "@/components/stocks/button-submit";
-import InputShowPassword from "@/components/stocks/input-show-password";
 import InputStrongPassword from "../stocks/input-strong-password";
+import InputShowPassword from "@/components/stocks/input-show-password";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export function RegisterForm() {
-  const [state, formAction] = useActionState(registerCredentials, null);
+  const [state, action, pending] = useActionState(registerCredentials, null);
 
   return (
-    <form action={formAction} className="flex flex-col gap-8">
+    <form action={action} className="flex flex-col gap-8">
       {state?.message && (
         <Alert variant="destructive" className="my-3">
           <TriangleAlert />
@@ -52,7 +53,7 @@ export function RegisterForm() {
           />
           <InputError message={state?.error?.confirmPassword} />
         </div>
-        <ButtonSubmit submitting={"Create account"} submit={"Create account"} />
+        <ButtonSubmit submit={"Create account"} submitting={"Creating"} pending={pending} />
       </div>
 
       <div className="text-muted-foreground text-center text-sm">
