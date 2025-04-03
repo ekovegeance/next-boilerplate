@@ -18,7 +18,6 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
     };
   }
 
-  console.log("Session dari layout", session?.user);
   return(
     <SessionProvider session={session}>
      <AppLayoutTemplate>{children}</AppLayoutTemplate>
