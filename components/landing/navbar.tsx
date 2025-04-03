@@ -2,38 +2,39 @@
 
 import * as React from "react";
 import Link from "next/link";
-import {  Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
-import clsx from "clsx";
+// import { usePathname } from "next/navigation";
+// import clsx from "clsx";
 import NavUserSkeleton from "@/components/stocks/nav-user-skeleton";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { UserMenuContent } from "@/components/user-menu-content";
 import { useInitials } from "@/hooks/use-initials";
 import { User } from "@prisma/client";
-import AppLogoIcon from '@/components/app-logo-icon';
+import AppLogoIcon from "@/components/app-logo-icon";
+import AppearanceToggleDropdown from "@/components/appearance-dropdown";
 
-const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "Users", href: "/users" },
-  { name: "Posts", href: "/posts" },
-  { name: "CRUD", href: "/crud" },
-  { name: "contact", href: "/contact" },
-];
+// const navLinks = [
+//   { name: "Home", href: "/" },
+//   { name: "Users", href: "/users" },
+//   { name: "Posts", href: "/posts" },
+//   { name: "CRUD", href: "/crud" },
+//   { name: "contact", href: "/contact" },
+// ];
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { data: session, status } = useSession();
   const auth = session;
 
-  const pathname = usePathname();
+  // const pathname = usePathname();
   const getInitials = useInitials();
 
   return (
@@ -44,7 +45,7 @@ export function Navbar() {
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="text-xl font-bold text-gray-800">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                <AppLogoIcon className='size-4 text-primary-foreground' />
+                  <AppLogoIcon className="size-4 text-primary-foreground" />
                 </div>
               </Link>
             </div>
@@ -68,7 +69,7 @@ export function Navbar() {
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
             <Suspense fallback={<NavUserSkeleton />}>
               {status === "authenticated" && session?.user ? (
-                  <DropdownMenu>
+                <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="ghost"
@@ -85,7 +86,11 @@ export function Navbar() {
                       </Avatar>
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-56 ms-4" align="end" forceMount>
+                  <DropdownMenuContent
+                    className="w-56 ms-4"
+                    align="end"
+                    forceMount
+                  >
                     <UserMenuContent user={auth?.user as User} />
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -121,9 +126,9 @@ export function Navbar() {
       </div>
 
       {isMenuOpen && (
-        <div className="sm:hidden">
+        <div className="sm:hidden min-h-svh">
           <div className="pt-2 pb-3 px-2 space-y-1">
-            {navLinks.map((link) => (
+            {/* {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -137,9 +142,9 @@ export function Navbar() {
               >
                 {link.name}
               </Link>
-            ))}
+            ))} */}
           </div>
-          <div className="pt-4 pb-3 border-t border-gray-200">
+          <div className="pt-4 pb-3 border-t border-primary-foreground">
             <Suspense fallback={<NavUserSkeleton />}>
               <div className="flex items-center px-4 gap-2">
                 {status === "authenticated" && session?.user ? (
@@ -160,7 +165,11 @@ export function Navbar() {
                         </Avatar>
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-56 ms-4" align="end" forceMount>
+                    <DropdownMenuContent
+                      className="w-56 ms-4"
+                      align="end"
+                      forceMount
+                    >
                       <UserMenuContent user={auth?.user as User} />
                     </DropdownMenuContent>
                   </DropdownMenu>
@@ -183,6 +192,10 @@ export function Navbar() {
                     </Link>
                   </>
                 )}
+              </div>
+              <div className="border-y border-primary-foreground py-3 mt-8 px-4 flex justify-between items-center gap-2">
+                <p>Theme</p>
+                <AppearanceToggleDropdown />
               </div>
             </Suspense>
           </div>
