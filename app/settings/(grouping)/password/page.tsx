@@ -1,12 +1,26 @@
 "use client";
 
+import React, { useActionState } from "react";
+
 import HeadingSmall from "@/components/heading-small";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import React from "react";
+import InputError from "@/components/stocks/input-error";
+import { updatePassword } from "@/actions/settings.action";
+import ButtonSubmit from "@/components/stocks/button-submit";
+import InputShowPassword from "@/components/stocks/input-show-password";
+import InputStrongPassword from "@/components/stocks/input-strong-password";
 
 export default function PasswordPage() {
+  const [state, action, pending] = useActionState(
+    async (prevState: unknown, formData: FormData) => {
+      const result = await updatePassword(prevState, formData);
+      if (result.success) {
+        console.log("sukses");
+      }
+      return result;
+    },
+    null
+  );
+
   return (
     <div className="space-y-6">
       <HeadingSmall
@@ -14,70 +28,50 @@ export default function PasswordPage() {
         description="Ensure your account is using a long, random password to stay secure"
       />
 
-      <form className="space-y-6">
+      <form action={action} className="space-y-6">
         <div className="grid gap-2">
-          <Label htmlFor="current_password">Current password</Label>
-
-          <Input
-            id="current_password"
-            // ref={currentPasswordInput}
-            value=""
-            onChange={() => {}}
-            type="password"
+          <InputShowPassword
+            label="Current password"
+            name="currentPassword"
             className="mt-1 block w-full"
             autoComplete="current-password"
             placeholder="Current password"
           />
 
-          {/* <InputError message={errors.current_password} /> */}
+          {state?.error && <InputError message={[state?.error]} />}
+          <InputError message={state?.errors?.currentPassword} />
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor="password">New password</Label>
-
-          <Input
-            id="password"
-            // ref={passwordInput}
-            // value={data.password}
-            // onChange={(e) => setData("password", e.target.value)}
-            type="password"
+          <InputStrongPassword
+            label="New Password"
+            name="newPassword"
             className="mt-1 block w-full"
             autoComplete="new-password"
             placeholder="New password"
           />
 
-          {/* <InputError message={errors.password} /> */}
+          <InputError message={state?.errors?.newPassword} />
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor="password_confirmation">Confirm password</Label>
-
-          <Input
-            id="password_confirmation"
-            // value={data.password_confirmation}
-            // onChange={(e) => setData("password_confirmation", e.target.value)}
-            type="password"
+          <InputShowPassword
+            label="Confirm password"
+            name="confirmPassword"
             className="mt-1 block w-full"
             autoComplete="new-password"
             placeholder="Confirm password"
           />
 
-          {/* <InputError message={errors.password_confirmation} /> */}
+          <InputError message={state?.errors?.confirmPassword} />
         </div>
 
-        <div className="flex items-center gap-4">
-          <Button>Save password</Button>
-
-          {/* <Transition
-            show={recentlySuccessful}
-            enter="transition ease-in-out"
-            enterFrom="opacity-0"
-            leave="transition ease-in-out"
-            leaveTo="opacity-0"
-          >
-            <p className="text-sm text-neutral-600">Saved</p>
-          </Transition> */}
-        </div>
+        <div className="flex flex-row gap-2 items-center">
+          <ButtonSubmit submit="Save password" submitting="Saving" pending={pending} />
+          {state?.success && (
+            <p className="text-muted-foreground text-sm">Saved</p>
+          )}
+        </div>  
       </form>
     </div>
   );

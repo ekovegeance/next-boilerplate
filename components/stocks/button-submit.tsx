@@ -1,9 +1,7 @@
-'use client'
+"use client";
 import React from "react";
-import { useFormStatus } from "react-dom";
-import { Button } from "@/components/ui/button";
 import Loading from "@/components/ui/loading";
-
+import { Button } from "@/components/ui/button";
 
 /**
  * Submit button component
@@ -12,20 +10,20 @@ import Loading from "@/components/ui/loading";
  * @example
  * ```tsx
  * import SubmitButton from "@/components/stocks/submit-button";
- * <SubmitButton submitting="Submitting..." submit="Submit" />
- * ``` 
- *  
+ * <SubmitButton submitting="Submitting..." submit="Submit pending={pending}" />
+ * ```
+ *
  */
 
 export default function ButtonSubmit({
   submitting,
   submit,
+  pending,
 }: {
   submitting: React.ReactNode;
   submit: React.ReactNode;
+  pending?: boolean;
 }) {
-  const { pending = false } = useFormStatus();
-
   return (
     <Button disabled={pending} type="submit">
       {pending ? (

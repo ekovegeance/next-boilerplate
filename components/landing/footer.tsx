@@ -1,4 +1,7 @@
-import Link from 'next/link'
+"use client";
+
+import Link from "next/link";
+import AppearanceToggleDropdown from "@/components/appearance-dropdown";
 
 export default function Footer() {
   return (
@@ -27,8 +30,10 @@ export default function Footer() {
             .
           </p>
         </div>
+        <div className="hidden sm:flex">
+          <AppearanceToggleDropdown />
+        </div>
       </div>
     </footer>
-  )
+  );
 }
-

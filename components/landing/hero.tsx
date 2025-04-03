@@ -44,7 +44,7 @@ export default function Hero() {
         <div>
           <Button size="lg">
             <FileCode2 />
-            <Link href="https://github.com/ekovegeance/Fullstack-Nextjs-Templates">
+            <Link href="https://github.com/ekovegeance/next-boilerplate">
               Get Started
             </Link>
           </Button>

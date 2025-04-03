@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+"use server"
 
-'use server'
-
-import { registerSchema, loginSchema, forgotPasswordSchema } from "@/lib/zod";
 import { hashSync } from "bcrypt-ts";
 import { prisma } from "@/lib/prisma";
-import { redirect } from "next/navigation";
-import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
+import { signIn, signOut } from "@/auth";
+import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import { registerSchema, loginSchema, forgotPasswordSchema } from "@/lib/zod";
 
 
 /**
@@ -19,15 +18,15 @@ import { revalidatePath } from "next/cache";
  * @returns An object containing errors if validation or registration fails.
  */
 export const registerCredentials = async (prevState: unknown, formData: FormData) => {
-    const validatedFields = registerSchema.safeParse(Object.fromEntries(formData.entries()));
+    const validate = registerSchema.safeParse(Object.fromEntries(formData.entries()));
 
-    if (!validatedFields.success) {
+    if (!validate.success) {
         return {
-            error: validatedFields.error.flatten().fieldErrors
+            error: validate.error.flatten().fieldErrors
         };
     }
 
-    const { name, email, password } = validatedFields.data;
+    const { name, email, password } = validate.data;
     const hashedPassword = hashSync(password, 10);
 
     try {
@@ -54,15 +53,15 @@ export const registerCredentials = async (prevState: unknown, formData: FormData
  * @returns An object containing errors if validation or login fails.
  */
 export const loginCredentials = async (prevState: unknown, formData: FormData) => {
-    const validatedFields = loginSchema.safeParse(Object.fromEntries(formData.entries()));
+    const validate = loginSchema.safeParse(Object.fromEntries(formData.entries()));
 
-    if (!validatedFields.success) {
+    if (!validate.success) {
         return {
-            error: validatedFields.error.flatten().fieldErrors
+            error: validate.error.flatten().fieldErrors
         };
     }
 
-    const { email, password } = validatedFields.data;
+    const { email, password } = validate.data;
 
     try {
         await signIn("credentials", { email, password, redirectTo: "/dashboard" });
@@ -95,20 +94,20 @@ export async function SignOut() {
  * @param formData - The form data containing the user's email address.
  * @returns An object containing success or error depending on the email sending process.
  */
-export async function forgotPassword(prevState: unknown, formData: FormData) {
-    const validatedFields = forgotPasswordSchema.safeParse({
+export const forgotPassword = async (prevState: unknown, formData: FormData) => {
+    const validate = forgotPasswordSchema.safeParse({
         email: formData.get('email'),
     });
 
-    if (!validatedFields.success) {
-        return { error: validatedFields.error.flatten().fieldErrors };
+    if (!validate.success) {
+        return { error: validate.error.flatten().fieldErrors };
     }
 
-    const { email } = validatedFields.data;
+    const { email } = validate.data;
 
     try {
         // Simulate API call for sending a password reset email
-        await new Promise(resolve => setTimeout(resolve, 2000)); 
+        await new Promise(resolve => setTimeout(resolve, 2000));
         console.log('Password reset email sent to:', email);
         return { success: true };
     } catch (error) {

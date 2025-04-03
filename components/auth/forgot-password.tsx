@@ -18,7 +18,7 @@ export default function ForgotPassword() {
             <span>A reset link will be sent if the account exists.</span>
           </div>
         )}
-        <div>
+        <div className="grid gap-2">
           <Label htmlFor="email">Email</Label>
           <Input
             id="email"
