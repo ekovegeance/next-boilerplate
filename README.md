@@ -1,4 +1,4 @@
-# Next Boilerplate
+![img](https://github.com/ekovegeance/next-boilerplate/blob/main/next-boilerplate.png)
 
 ## Getting Started
 
@@ -45,7 +45,7 @@ Generate UI [v0](https://v0.dev/https://v0.dev/)
 
 
 ## Deploy on Vercel
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fekovegeance%2FFullstack-Nextjs-Templates%2F&showOptionalTeamCreation=false&teamSlug=ekovegeances-projects)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fekovegeance%2Fnext-boilerplate%2F&showOptionalTeamCreation=false&teamSlug=ekovegeances-projects)
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
