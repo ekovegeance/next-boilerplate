@@ -5,14 +5,10 @@
 First, run the development server:
 
 ```bash
-npx create-next-app@latest -e https://github.com/ekovegeance/next-boilerplate [your-project-name]
+npx create-vngne-boilerplate@latest
 ```
 ```bash
-npm install && npm run dev
-```
-Configure your local environment
-```bash
-cp .env.example .env
+npm run dev
 ```
 Migrate database
 ```bash
