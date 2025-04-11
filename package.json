@@ -1,6 +1,6 @@
 {
-  "name": "next",
-  "version": "0.1.0",
+  "name": "next-boilerplate",
+  "version": "15.2.4",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
