@@ -8,6 +8,9 @@ First, run the development server:
 npx create-vngne-boilerplate@latest
 ```
 ```bash
+cd your-project-name
+```
+```bash
 npm run dev
 ```
 Migrate database
@@ -20,7 +23,8 @@ Database seeding
 npx prisma db seed
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. And see [Documentation](https://github.com/ekovegeance/Fullstack-Nextjs-Templates/blob/main/DOCS.md)
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Use [Style Guide](https://ekovegeance.github.io/styleguide/coding/nextjs) for Consistent Development
 
 
 ## Tech Stack
