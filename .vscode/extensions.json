@@ -1,0 +1,22 @@
+{
+    "recommendations": [
+        "Prisma.prisma",
+
+        "ekovegeance.awesomecode",
+        "bradlc.vscode-tailwindcss",
+        "heybourn.headwind",
+        "dsznajder.es7-react-js-snippets",
+        "formulahendry.auto-rename-tag",
+        "kevinkyang.auto-comment-blocks",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "kevinkyang.auto-comment-blocks",
+        "formulahendry.auto-close-tag",
+        "aaron-bond.better-comments",
+        "mhutchie.git-graph",
+        "vincaslt.highlight-matching-tag",
+        "ms-vscode.vscode-typescript-next",
+        "shardulm94.trailing-spaces",
+        "naumovs.color-highlight",
+    ]
+}
