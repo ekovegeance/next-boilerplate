@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import Loading from "@/components/ui/loading";
 import { Button } from "@/components/ui/button";
@@ -19,13 +20,36 @@ export default function ButtonSubmit({
   submitting,
   submit,
   pending,
+  variant,
+  size,
+  className,
+  type = "submit",
 }: {
   submitting: React.ReactNode;
   submit: React.ReactNode;
   pending?: boolean;
+  variant?:
+    | "link"
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | null
+    | undefined;
+  size?: "sm" | "lg" | "icon" | "default" | undefined;
+  className?: string;
+  disabled?: boolean;
+  type?: "button" | "submit" | "reset" | undefined;
 }) {
   return (
-    <Button disabled={pending} type="submit">
+    <Button
+      size={size}
+      variant={variant}
+      disabled={pending}
+      type={type}
+      className={className}
+    >
       {pending ? (
         <div className="flex justify-center items-center gap-2">
           <Loading />
