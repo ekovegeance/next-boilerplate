@@ -2,7 +2,7 @@ import { type PropsWithChildren } from "react";
 import Image from "next/image";
 import floss from "@/public/images/floss.png";
 import Link from "next/link";
-import AppLogoIcon from "@/components/app-logo-icon";
+import AppLogo from "@/components/app-logo";
 
 interface AuthLayoutProps {
   title?: string;
@@ -19,10 +19,7 @@ export default function AuthSplitLayout({
       <div className="flex flex-col gap-4 p-6 md:p-10">
         <div className="flex justify-center gap-2 md:justify-start">
           <Link href="/" className="flex items-center gap-2 font-medium">
-            <div className="bg-primary text-primary-foreground flex size-8 items-center justify-center rounded-lg aspect-square">
-              <AppLogoIcon className="dark:text-primary-foreground size-4" />
-            </div>
-            {process.env.APP_NAME}
+            <AppLogo/>
           </Link>
         </div>
         <div className="flex flex-1 items-center justify-center">
