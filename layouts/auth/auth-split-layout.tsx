@@ -22,7 +22,7 @@ export default function AuthSplitLayout({
             <div className="bg-primary text-primary-foreground flex size-8 items-center justify-center rounded-lg aspect-square">
               <AppLogoIcon className="dark:text-primary-foreground size-4" />
             </div>
-            Next Boilerplate
+            {process.env.APP_NAME}
           </Link>
         </div>
         <div className="flex flex-1 items-center justify-center">
