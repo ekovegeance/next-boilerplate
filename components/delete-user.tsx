@@ -70,14 +70,7 @@ export default function DeleteUser() {
                 <DialogClose asChild>
                   <Button variant="secondary">Cancel</Button>
                 </DialogClose>
-                <Button
-                  type="submit"
-                  variant="destructive"
-                  disabled={pending}
-                >
-                  {pending ? "Deleting" : "Delete account"}
-                </Button>
-                <ButtonSubmit submit="Delete account" submitting="Deleting" pending={pending}/>
+                <ButtonSubmit variant="destructive" submit="Delete account" submitting="Deleting" pending={pending}/>
               </DialogFooter>
             </form>
           </DialogContent>
