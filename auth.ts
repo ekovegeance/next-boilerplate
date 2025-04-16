@@ -59,26 +59,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         }),
     ],
     callbacks: {
-        authorized({ auth, request: { nextUrl } }) {
-            const isLoggedIn = !!auth?.user;
-            const ProtectedRoutes = [
-                "/dashboard",
-                "/account",
-                "/settings",
-                "/settings/profile",
-                "/settings/password",
-                "/settings/appearance",
-            ];
-
-            if (!isLoggedIn && ProtectedRoutes.includes(nextUrl.pathname)) {
-                return Response.redirect(new URL("/login", nextUrl));
-            }
-            if (isLoggedIn && nextUrl.pathname.startsWith("/login")) {
-                return Response.redirect(new URL("/dashboard", nextUrl));
-            }
-            return true;
-        },
-
         jwt({ token, trigger, user, session }) {
             if (trigger === "update" && session?.user) {
                 token.name = session.user.name;
