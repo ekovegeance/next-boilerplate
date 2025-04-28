@@ -10,7 +10,7 @@ import { ClipboardCheck, ShieldCheck, UserRoundCog } from "lucide-react";
 const features = [
   {
     icon: <ClipboardCheck className="h-10 w-10" />,
-    title: "Dashboard & CRUD",
+    title: "Dashboard",
     description:
       "Manage data effortlessly with a user-friendly interface and flexible CRUD features for various needs.",
   },
@@ -22,7 +22,7 @@ const features = [
   },
   {
     icon: <UserRoundCog className="h-10 w-10" />,
-    title: "User & Post Management",
+    title: "User Management",
     description:
       "Handle users and manage content with complete features for adding, editing, and deleting data efficiently.",
   },
