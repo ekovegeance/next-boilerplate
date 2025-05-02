@@ -10,7 +10,7 @@ export default function SiteLayout({
   return (
     <section>
       <Navbar />
-      <main className="max-w-7xl mx-auto min-h-svh py-6 sm:px-6 px-4 lg:px-8 pt-20">
+      <main className="mx-auto min-h-svh max-w-7xl px-4 sm:px-6 lg:px-8">
         {children}
       </main>
       <Footer />

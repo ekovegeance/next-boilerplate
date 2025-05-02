@@ -3,7 +3,7 @@
   "version": "15.2.4",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "postinstall": "prisma generate",
     "clean": "rm -rf .next",

@@ -62,7 +62,7 @@ const rightNavItems: NavItem[] = [
   },
   {
     title: "Documentation",
-    href: "https://github.com/ekovegeance/next-boilerplate",
+    href: "https://nextjs.org/docs",
     icon: BookOpen,
   },
 ];

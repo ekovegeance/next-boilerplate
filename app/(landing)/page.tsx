@@ -5,7 +5,7 @@ import CTA from "@/components/landing/cta";
 export default function Home() {
   
   return (
-      <main>
+      <main className="md:pt-24">
         <Hero />
         <Features />
         <CTA />

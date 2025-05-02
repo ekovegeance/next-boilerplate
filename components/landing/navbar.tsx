@@ -6,8 +6,6 @@ import { Menu, X } from "lucide-react";
 import { Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
-// import { usePathname } from "next/navigation";
-// import clsx from "clsx";
 import NavUserSkeleton from "@/components/stocks/nav-user-skeleton";
 import {
   DropdownMenu,
@@ -20,13 +18,13 @@ import { useInitials } from "@/hooks/use-initials";
 import { User } from "@prisma/client";
 import AppLogoIcon from "@/components/app-logo-icon";
 import AppearanceToggleDropdown from "@/components/appearance-dropdown";
+// import { usePathname } from "next/navigation";
+// import clsx from "clsx";
 
 // const navLinks = [
 //   { name: "Home", href: "/" },
 //   { name: "Users", href: "/users" },
-//   { name: "Posts", href: "/posts" },
-//   { name: "CRUD", href: "/crud" },
-//   { name: "contact", href: "/contact" },
+//   { name: "Etc", href: "/etc" },
 // ];
 
 export function Navbar() {

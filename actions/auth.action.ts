@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use server"
 
-import { hashSync } from "bcrypt-ts";
-import { prisma } from "@/lib/prisma";
-import { AuthError } from "next-auth";
-import { signIn, signOut } from "@/auth";
-import { redirect } from "next/navigation";
-import { revalidatePath } from "next/cache";
-import { registerSchema, loginSchema, forgotPasswordSchema } from "@/lib/zod";
+import {hashSync} from "bcrypt-ts";
+import {prisma} from "@/lib/prisma";
+import {AuthError} from "next-auth";
+import {signIn, signOut} from "@/auth";
+import {redirect} from "next/navigation";
+import {revalidatePath} from "next/cache";
+import {registerSchema, loginSchema, forgotPasswordSchema} from "@/lib/zod";
 
 
 /**
@@ -26,7 +26,7 @@ export const registerCredentials = async (prevState: unknown, formData: FormData
         };
     }
 
-    const { name, email, password } = validate.data;
+    const {name, email, password} = validate.data;
     const hashedPassword = hashSync(password, 10);
 
     try {
@@ -39,10 +39,9 @@ export const registerCredentials = async (prevState: unknown, formData: FormData
         });
         revalidatePath("/users");
     } catch (error) {
-        return { message: "An error occurred while creating the user." };
+        return {message: "An error occurred while creating the user."};
     }
-
-    redirect("/login");
+    redirect("/dashboard");
 };
 
 /**
@@ -61,17 +60,18 @@ export const loginCredentials = async (prevState: unknown, formData: FormData) =
         };
     }
 
-    const { email, password } = validate.data;
+    const {email, password} = validate.data;
 
     try {
-        await signIn("credentials", { email, password, redirectTo: "/dashboard" });
+        await signIn("credentials", {email, password, redirectTo: "/dashboard"});
     } catch (error) {
         if (error instanceof AuthError) {
+            // @ts-ignore
             switch (error.type) {
                 case "CredentialsSignin":
-                    return { message: "Invalid credentials" };
+                    return {message: "Invalid credentials"};
                 default:
-                    return { message: "An error occurred while signing in." };
+                    return {message: "An error occurred while signing in."};
             }
         }
         throw error;
@@ -84,7 +84,7 @@ export const loginCredentials = async (prevState: unknown, formData: FormData) =
  * @returns Nothing is returned.
  */
 export async function SignOut() {
-    await signOut({ redirectTo: "/login" });
+    await signOut({redirectTo: "/login"});
 }
 
 /**
@@ -100,17 +100,17 @@ export const forgotPassword = async (prevState: unknown, formData: FormData) => 
     });
 
     if (!validate.success) {
-        return { error: validate.error.flatten().fieldErrors };
+        return {error: validate.error.flatten().fieldErrors};
     }
 
-    const { email } = validate.data;
+    const {email} = validate.data;
 
     try {
         // Simulate API call for sending a password reset email
         await new Promise(resolve => setTimeout(resolve, 2000));
         console.log('Password reset email sent to:', email);
-        return { success: true };
+        return {success: true};
     } catch (error) {
-        return { error: 'Failed to send reset email. Please try again.' };
+        return {error: 'Failed to send reset email. Please try again.'};
     }
 }
