@@ -21,7 +21,7 @@ export function RegisterForm() {
       {state?.message && (
         <Alert variant="destructive" className="my-3">
           <TriangleAlert />
-          <AlertTitle className="font-semibold">Woops!</AlertTitle>
+          <AlertTitle className="font-semibold">Whoops!</AlertTitle>
           <AlertDescription>{state.message}</AlertDescription>
         </Alert>
       )}
@@ -58,7 +58,7 @@ export function RegisterForm() {
 
       <div className="text-muted-foreground text-center text-sm">
         Have an account?{" "}
-        <Link href="login" className="underline">
+        <Link href="/login" className="underline">
           Login
         </Link>
       </div>

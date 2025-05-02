@@ -9,18 +9,19 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
 
   if (session?.user) {
     session.user = {
+      id: "",
       name: session.user.name,
       email: session.user.email,
       image: session.user.image,
       username: session.user.username,
       role: session.user.role,
-      avatar: session.user.avatar,
+      avatar: session.user.avatar
     };
   }
 
   return(
-    <SessionProvider session={session}>
-     <AppLayoutTemplate>{children}</AppLayoutTemplate>
-     </SessionProvider>
-    );
+      <SessionProvider session={session}>
+        <AppLayoutTemplate>{children}</AppLayoutTemplate>
+      </SessionProvider>
+  );
 }
