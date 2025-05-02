@@ -13,6 +13,8 @@ cd your-project-name
 ```bash
 npm run dev
 ```
+Edit your `.env` file
+
 Migrate database
 ```bash
 npx prisma migrate dev --name init
