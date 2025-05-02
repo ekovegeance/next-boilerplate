@@ -88,15 +88,15 @@ export const updatePassword = async (prevState: unknown, formData: FormData) => 
     return { error: "Unauthorized" };
   }
 
-  const falidate = updatePasswordSchema.safeParse(
+  const validate = updatePasswordSchema.safeParse(
     Object.fromEntries(formData.entries())
   );
 
-  if (!falidate.success) {
-    return { errors: falidate.error.flatten().fieldErrors };
+  if (!validate.success) {
+    return { errors: validate.error.flatten().fieldErrors };
   }
 
-  const { currentPassword, newPassword } = falidate.data;
+  const { currentPassword, newPassword } = validate.data;
   const hashedNewPassword = hashSync(newPassword, 10);
 
   const user = await prisma.user.findUnique({
