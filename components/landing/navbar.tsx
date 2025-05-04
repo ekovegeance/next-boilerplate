@@ -1,38 +1,35 @@
 "use client";
 
 import * as React from "react";
+import {Suspense} from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
-import { Suspense } from "react";
-import { Button } from "@/components/ui/button";
-import { useSession } from "next-auth/react";
+import {Menu, X} from "lucide-react";
+import {Button} from "@/components/ui/button";
+import {useSession} from "next-auth/react";
 import NavUserSkeleton from "@/components/stocks/nav-user-skeleton";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { UserMenuContent } from "@/components/user-menu-content";
-import { useInitials } from "@/hooks/use-initials";
-import { User } from "@prisma/client";
+import {DropdownMenu, DropdownMenuContent, DropdownMenuTrigger,} from "@/components/ui/dropdown-menu";
+import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
+import {UserMenuContent} from "@/components/user-menu-content";
+import {useInitials} from "@/hooks/use-initials";
+import {User} from "@prisma/client";
 import AppLogoIcon from "@/components/app-logo-icon";
 import AppearanceToggleDropdown from "@/components/appearance-dropdown";
-// import { usePathname } from "next/navigation";
-// import clsx from "clsx";
+import {usePathname} from "next/navigation";
+import clsx from "clsx";
 
-// const navLinks = [
-//   { name: "Home", href: "/" },
-//   { name: "Users", href: "/users" },
-//   { name: "Etc", href: "/etc" },
-// ];
+const navLinks = [
+  // { name: "Home", href: "/" },
+  {name: "Example CRUD", href: "/example"},
+  // { name: "Users", href: "/users" },
+  // { name: "Etc", href: "/etc" },
+];
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const { data: session, status } = useSession();
   const auth = session;
 
-  // const pathname = usePathname();
+  const pathname = usePathname();
   const getInitials = useInitials();
 
   return (
@@ -48,7 +45,7 @@ export function Navbar() {
               </Link>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-              {/* {navLinks.map((link) => (
+              {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -61,7 +58,7 @@ export function Navbar() {
                 >
                   {link.name}
                 </Link>
-              ))} */}
+              ))}
             </div>
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
@@ -126,7 +123,7 @@ export function Navbar() {
       {isMenuOpen && (
         <div className="sm:hidden min-h-svh">
           <div className="pt-2 pb-3 px-2 space-y-1">
-            {/* {navLinks.map((link) => (
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -140,7 +137,7 @@ export function Navbar() {
               >
                 {link.name}
               </Link>
-            ))} */}
+            ))}
           </div>
           <div className="pt-4 pb-3 border-t border-primary-foreground">
             <Suspense fallback={<NavUserSkeleton />}>
