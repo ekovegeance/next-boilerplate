@@ -7,7 +7,7 @@ import {AuthError} from "next-auth";
 import {signIn, signOut} from "@/auth";
 import {redirect} from "next/navigation";
 import {revalidatePath} from "next/cache";
-import {registerSchema, loginSchema, forgotPasswordSchema} from "@/lib/zod";
+import {registerSchema, loginSchema, forgotPasswordSchema} from "@/lib/definitions";
 
 
 /**

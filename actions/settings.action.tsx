@@ -5,7 +5,7 @@ import {
   settingsProfileSchema,
   deleteUserSchema,
   updatePasswordSchema,
-} from "@/lib/zod";
+} from "@/lib/definitions";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { compareSync, hashSync } from "bcrypt-ts";
