@@ -1,11 +1,10 @@
 import ExampleCard from '@/components/example/example-card';
-
 import React from 'react';
-import {prisma} from "@/lib/prisma";
-import {Example} from "@prisma/client";
-import {Button} from '@/components/ui/button';
-import Link from "next/link";
-import ExampleCreateModal from "@/components/example/example-create-modal";
+import { prisma } from '@/lib/prisma';
+import { Example } from '@prisma/client';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import ExampleCreateModal from '@/components/example/example-create-modal';
 
 /**
  * Read
@@ -14,7 +13,6 @@ import ExampleCreateModal from "@/components/example/example-create-modal";
  * @see https://www.prisma.io/docs/orm/prisma-client/queries/crud#read
  */
 export default async function ExamplePage() {
-
     const examples: Example[] = await prisma.example.findMany();
 
     return (
@@ -24,19 +22,18 @@ export default async function ExamplePage() {
                 <Link href="/example/create">
                     <Button>Create With Page</Button>
                 </Link>
-                <ExampleCreateModal/>
+                <ExampleCreateModal />
             </div>
             {examples.length === 0 && (
                 <div className="md:pt-24 flex flex-col gap-2 justify-center items-center">
-                    <h2 >Examples Read Data not found</h2>
+                    <h2>Examples Read Data not found</h2>
                 </div>
             )}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3 mb-8">
                 {examples.map((example) => (
-                    <ExampleCard key={example.id} example={example}/>
+                    <ExampleCard key={example.id} example={example} />
                 ))}
             </div>
         </div>
     );
-
 }
