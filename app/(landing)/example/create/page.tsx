@@ -1,5 +1,5 @@
 import React from 'react';
-import {ExampleCreateForm} from "@/components/example/example-create-form";
+import {CreateExampleForm} from "@/components/example/create-example-form";
 
 export default function ExampleCreatePage() {
     return (
@@ -7,7 +7,7 @@ export default function ExampleCreatePage() {
             <h2 className="text-lg font-semibold mb-8">Example Create Data</h2>
 
             <div className="mx-auto">
-                <ExampleCreateForm/>
+                <CreateExampleForm/>
             </div>
         </div>
     );

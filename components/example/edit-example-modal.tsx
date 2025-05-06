@@ -17,19 +17,12 @@ export default function EditExampleDialog({example}: { example: Example }) {
     const router = useRouter();
     const [open, setOpen] = useState(false);
 
-    // const initialState = {
-    //     errors: {},
-    //     error: '',
-    //     success: false,
-    // };
-
     const [state, action, pending] = useActionState(updateExample, null);
 
     useEffect(() => {
         if (state?.success) {
             setOpen(false);
             toast.success(`Example updated successfully`);
-
         }
     }, [state?.success, router]);
 

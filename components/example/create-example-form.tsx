@@ -8,7 +8,7 @@ import {useActionState, useEffect} from 'react';
 import {useRouter} from 'next/navigation';
 import InputError from "@/components/stocks/input-error";
 
-export function ExampleCreateForm() {
+export function CreateExampleForm() {
     const router = useRouter();
     const [state, action] = useActionState(createExample, null);
     useEffect(() => {

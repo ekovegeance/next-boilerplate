@@ -1,21 +1,20 @@
 'use client';
 
-import {useEffect, useState} from 'react';
+import React, {useActionState, useEffect, useState} from 'react';
 import {useRouter} from 'next/navigation';
 import {deleteExample} from '@/actions/example.action';
 
 import {Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger,} from '@/components/ui/dialog';
 import {Button} from '@/components/ui/button';
-import InputError from "@/components/stocks/input-error";
 import {toast} from "sonner";
-import {useFormState} from "react-dom";
+import ButtonSubmit from "@/components/stocks/button-submit";
 
+// const initialState = {success: false, error: null};
 export default function DeleteExampleDialog({exampleId}: { exampleId: string }) {
     const router = useRouter();
     const [open, setOpen] = useState(false);
 
-    // const initialState = { success: false, error: '' };
-    const [state, action] = useFormState(deleteExample, null);
+    const [state, action, pending] = useActionState(deleteExample, null);
 
     useEffect(() => {
         if (state?.success) {
@@ -40,15 +39,12 @@ export default function DeleteExampleDialog({exampleId}: { exampleId: string }) 
                     <p className="text-sm text-muted-foreground mb-4">
                         This action cannot be undone. This will permanently delete the data.
                     </p>
-                    <InputError message={state?.error ? [state.error] : undefined}/>
 
                     <DialogFooter>
                         <Button type="button" variant="outline" onClick={() => setOpen(false)}>
                             Cancel
                         </Button>
-                        <Button type="submit" variant="destructive">
-                            Delete
-                        </Button>
+                        <ButtonSubmit variant="destructive" submit="Delete" submitting="Deleting" pending={pending} />
                     </DialogFooter>
                 </form>
             </DialogContent>

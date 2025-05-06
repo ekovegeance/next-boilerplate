@@ -18,7 +18,7 @@ import {usePathname} from "next/navigation";
 import clsx from "clsx";
 
 const navLinks = [
-  // { name: "Home", href: "/" },
+  { name: "Home", href: "/" },
   {name: "Example CRUD", href: "/example"},
   // { name: "Users", href: "/users" },
   // { name: "Etc", href: "/etc" },
