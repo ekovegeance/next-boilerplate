@@ -1,7 +1,7 @@
 'use client';
 
 import {useRouter} from 'next/navigation';
-import {useActionState, useEffect, useState} from 'react';
+import React, {useActionState, useEffect, useState} from 'react';
 import {createExample} from '@/actions/example.action';
 
 import {

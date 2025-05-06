@@ -4,11 +4,11 @@ import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} f
 import {Button} from '@/components/ui/button';
 import Link from "next/link";
 import {Example} from '@prisma/client';
-import EditExampleDialog from "@/components/example/example-edit-modal";
-import DeleteExampleDialog from "@/components/example/example-delete-modal";
+import EditExampleDialog from "@/components/example/edit-example-modal";
+import DeleteExampleDialog from "@/components/example/delete-example-modal";
 import {auth} from "@/auth"
 
-export default async function ExampleCard({example}: { example: Example }) {
+export default async function CardExample({example}: { example: Example }) {
     const session = await auth();
     return (
         <div>

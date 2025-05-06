@@ -88,7 +88,11 @@ export async function updateExample(prevState: unknown, formData: FormData) {
     }
 }
 
-export async function deleteExample(prevState: unknown, formData: FormData) {
+type DeleteExampleState = {
+    success?: boolean;
+    error?: string | null;
+};
+export async function deleteExample(prevState: unknown, formData: FormData)  {
     const session = await auth();
     if (!session?.user?.id) {
         return {error: 'Unauthorized'};

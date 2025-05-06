@@ -1,10 +1,10 @@
-import ExampleCard from '@/components/example/example-card';
+import CardExample from '@/components/example/card-example';
 import React from 'react';
 import { prisma } from '@/lib/prisma';
 import { Example } from '@prisma/client';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import ExampleCreateModal from '@/components/example/example-create-modal';
+import ExampleCreateModal from '@/components/example/create-example-modal';
 
 /**
  * Read
@@ -31,7 +31,7 @@ export default async function ExamplePage() {
             )}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3 mb-8">
                 {examples.map((example) => (
-                    <ExampleCard key={example.id} example={example} />
+                    <CardExample key={example.id} example={example} />
                 ))}
             </div>
         </div>
