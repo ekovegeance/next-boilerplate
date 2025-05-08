@@ -24,7 +24,7 @@ export default async function CardExample({example}: { example: Example }) {
                 <CardFooter>
                     {session?.user.id === example.userId && (
                     <div className="flex flex-row gap-4">
-                        <Link href={`/example/${example.id}`}>
+                        <Link href={`/examples/${example.id}`}>
                             <Button>Show</Button>
                         </Link>
                         <EditExampleDialog example={example}/>
