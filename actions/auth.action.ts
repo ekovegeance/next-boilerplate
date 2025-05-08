@@ -18,15 +18,15 @@ import {registerSchema, loginSchema, forgotPasswordSchema} from "@/lib/definitio
  * @returns An object containing errors if validation or registration fails.
  */
 export const registerCredentials = async (prevState: unknown, formData: FormData) => {
-    const validate = registerSchema.safeParse(Object.fromEntries(formData.entries()));
+    const validated = registerSchema.safeParse(Object.fromEntries(formData.entries()));
 
-    if (!validate.success) {
+    if (!validated.success) {
         return {
-            error: validate.error.flatten().fieldErrors
+            error: validated.error.flatten().fieldErrors
         };
     }
 
-    const {name, email, password} = validate.data;
+    const {name, email, password} = validated.data;
     const hashedPassword = hashSync(password, 10);
 
     try {
@@ -52,15 +52,15 @@ export const registerCredentials = async (prevState: unknown, formData: FormData
  * @returns An object containing errors if validation or login fails.
  */
 export const loginCredentials = async (prevState: unknown, formData: FormData) => {
-    const validate = loginSchema.safeParse(Object.fromEntries(formData.entries()));
+    const validated = loginSchema.safeParse(Object.fromEntries(formData.entries()));
 
-    if (!validate.success) {
+    if (!validated.success) {
         return {
-            error: validate.error.flatten().fieldErrors
+            error: validated.error.flatten().fieldErrors
         };
     }
 
-    const {email, password} = validate.data;
+    const {email, password} = validated.data;
 
     try {
         await signIn("credentials", {email, password, redirectTo: "/dashboard"});
@@ -68,7 +68,7 @@ export const loginCredentials = async (prevState: unknown, formData: FormData) =
         if (error instanceof AuthError) {
             // @ts-ignore
             switch (error.type) {
-                case "CredentialsSignin":
+                case "CredentialsSigning":
                     return {message: "Invalid credentials"};
                 default:
                     return {message: "An error occurred while signing in."};
@@ -95,15 +95,15 @@ export async function SignOut() {
  * @returns An object containing success or error depending on the email sending process.
  */
 export const forgotPassword = async (prevState: unknown, formData: FormData) => {
-    const validate = forgotPasswordSchema.safeParse({
+    const validated = forgotPasswordSchema.safeParse({
         email: formData.get('email'),
     });
 
-    if (!validate.success) {
-        return {error: validate.error.flatten().fieldErrors};
+    if (!validated.success) {
+        return {error: validated.error.flatten().fieldErrors};
     }
 
-    const {email} = validate.data;
+    const {email} = validated.data;
 
     try {
         // Simulate API call for sending a password reset email

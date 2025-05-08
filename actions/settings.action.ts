@@ -18,15 +18,15 @@ export const updateProfile = async (prevState: unknown, formData: FormData) => {
     return { error: "Unauthorized" };
   }
 
-  const validate = settingsProfileSchema.safeParse(
+  const validated = settingsProfileSchema.safeParse(
     Object.fromEntries(formData.entries())
   );
 
-  if (!validate.success) {
-    return { errors: validate.error.flatten().fieldErrors };
+  if (!validated.success) {
+    return { errors: validated.error.flatten().fieldErrors };
   }
 
-  const { name, email } = validate.data;
+  const { name, email } = validated.data;
 
   try {
     const updatedUser = await prisma.user.update({
@@ -46,15 +46,15 @@ export const deleteUser = async (prevState: unknown, formData: FormData) => {
     return { error: "Unauthorized" };
   }
 
-  const validate = deleteUserSchema.safeParse(
+  const validated = deleteUserSchema.safeParse(
     Object.fromEntries(formData.entries())
   );
 
-  if (!validate.success) {
-    return { errors: validate.error.flatten().fieldErrors };
+  if (!validated.success) {
+    return { errors: validated.error.flatten().fieldErrors };
   }
 
-  const { password } = validate.data;
+  const { password } = validated.data;
 
   const user = await prisma.user.findUnique({
     where: { id: session.user.id },
@@ -88,15 +88,15 @@ export const updatePassword = async (prevState: unknown, formData: FormData) => 
     return { error: "Unauthorized" };
   }
 
-  const validate = updatePasswordSchema.safeParse(
+  const validated = updatePasswordSchema.safeParse(
     Object.fromEntries(formData.entries())
   );
 
-  if (!validate.success) {
-    return { errors: validate.error.flatten().fieldErrors };
+  if (!validated.success) {
+    return { errors: validated.error.flatten().fieldErrors };
   }
 
-  const { currentPassword, newPassword } = validate.data;
+  const { currentPassword, newPassword } = validated.data;
   const hashedNewPassword = hashSync(newPassword, 10);
 
   const user = await prisma.user.findUnique({
