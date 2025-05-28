@@ -2,8 +2,7 @@ import { auth as middleware } from '@/auth';
 
 const protectedResources = [
     "/dashboard",
-    "/account",
-    "/settings",
+    "/examples",
     "/settings/profile",
     "/settings/password",
     "/settings/appearance",
