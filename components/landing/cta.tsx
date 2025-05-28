@@ -15,7 +15,7 @@ export default function CTA() {
         </p>
         <div className="mt-8">
           <Button size="lg" asChild>
-            <Link href="https://github.com/ekovegeance/Fullstack-Nextjs-Templates">
+            <Link href="https://github.com/ekovegeance/next-boilerplate">
               Get Started <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
