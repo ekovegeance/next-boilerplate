@@ -10,6 +10,14 @@
     "start": "next start",
     "lint": "next lint",
     "info": "next info",
+    "db:generate": "prisma generate",
+    "db:studio": "prisma studio",
+    "db:migrate": "prisma migrate dev",
+    "db:pull": "prisma db pull",
+    "db:push": "prisma db push",
+    "db:validate": "prisma validate",
+    "db:format": "prisma format",
+    "db:seed": "prisma db seed",
     "test": "vitest"
   },
   "prisma": {
