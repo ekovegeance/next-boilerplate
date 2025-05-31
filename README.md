@@ -3,21 +3,27 @@
 ## Getting Started
 
 First, run the development server:
-
 ```bash
 npx create-vngne-boilerplate@latest
 ```
+Configure your environment variables in `.env` file.
+```bash
+vi .env
+```
+Run local development server:
 ```bash
 npm run dev
 ```
 Migrate database
 ```bash
-npx prisma migrate dev --name init
-npx prisma studio
+npm run db:migrate
+```
+```bash
+npm run db:studio
 ```
 Database seeding
 ```bash
-npx prisma db seed
+npm run db:seed
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. And see [Documentation](https://github.com/ekovegeance/Fullstack-Nextjs-Templates/blob/main/DOCS.md)
@@ -37,7 +43,6 @@ Generate UI [v0](https://v0.dev/https://v0.dev/)
 
 ## Show more
 - [Project](https://github.com/users/ekovegeance/projects/8)
-- [Discussions](https://github.com/ekovegeance/Fullstack-Nextjs-Templates/discussions/5)
 
 
 ## Deploy on Vercel
