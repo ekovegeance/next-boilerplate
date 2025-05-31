@@ -1,4 +1,4 @@
-![img](https://github.com/ekovegeance/next-boilerplate/blob/main/next-boilerplate.png)
+# Next Boilerplate
 
 ## Getting Started
 
@@ -12,13 +12,8 @@ vi .env
 ```
 Run local development server:
 ```bash
-cd your-project-name
-```
-```bash
 npm run dev
 ```
-Edit your `.env` file
-
 Migrate database
 ```bash
 npm run db:migrate
@@ -31,8 +26,7 @@ Database seeding
 npm run db:seed
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-Use [Style Guide](https://ekovegeance.github.io/styleguide/coding/nextjs) for Consistent Development
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. And see [Documentation](https://github.com/ekovegeance/Fullstack-Nextjs-Templates/blob/main/DOCS.md)
 
 
 ## Tech Stack
@@ -52,7 +46,7 @@ Generate UI [v0](https://v0.dev/https://v0.dev/)
 
 
 ## Deploy on Vercel
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fekovegeance%2Fnext-boilerplate%2F&showOptionalTeamCreation=false&teamSlug=ekovegeances-projects)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fekovegeance%2FFullstack-Nextjs-Templates%2F&showOptionalTeamCreation=false&teamSlug=ekovegeances-projects)
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
