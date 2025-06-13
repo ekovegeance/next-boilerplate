@@ -15,9 +15,9 @@ import {
 import { Button } from "@/components/ui/button";
 import HeadingSmall from "@/components/heading-small";
 import { deleteUser } from "@/actions/settings.action";
-import InputError from "@/components/stocks/input-error";
-import ButtonSubmit from "@/components/stocks/button-submit";
-import InputShowPassword from "@/components/stocks/input-show-password";
+import InputError from "@/components/shared/input-error";
+import ButtonSubmit from "@/components/shared/button-submit";
+import InputShowPassword from "@/components/shared/input-show-password";
 
 
 export default function DeleteUser() {

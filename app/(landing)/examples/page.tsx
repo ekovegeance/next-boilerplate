@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import ExampleCreateModal from '@/components/example/create-example-modal';
 import {paginate} from '@/lib/paginate'
-import SimplePaginate from '@/components/stocks/simple-paginate';
+import SimplePaginate from '@/components/shared/simple-paginate';
 import {Example} from "@prisma/client";
 
 /**

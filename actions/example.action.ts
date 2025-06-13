@@ -3,7 +3,7 @@
 "use server";
 
 import {prisma} from "@/lib/prisma";
-import {createExampleSchema, updateExampleSchema} from "@/lib/definitions";
+import {createExampleSchema, updateExampleSchema} from "@/lib/schemas/example";
 import {revalidatePath} from "next/cache";
 import {auth} from '@/auth';
 import {redirect} from "next/navigation";

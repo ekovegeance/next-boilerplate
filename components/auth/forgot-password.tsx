@@ -5,7 +5,7 @@ import { forgotPassword } from "@/actions/auth.action";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { AlertCircle } from "lucide-react";
-import SubmitButton from "../stocks/button-submit";
+import SubmitButton from "@/components/shared/button-submit";
 export default function ForgotPassword() {
   const [state, formAction] = useActionState(forgotPassword, null);
   const [email, setEmail] = useState("");

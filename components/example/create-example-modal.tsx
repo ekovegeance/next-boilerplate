@@ -16,8 +16,8 @@ import {
 import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
 import {Label} from '@/components/ui/label';
-import InputError from "@/components/stocks/input-error";
-import ButtonSubmit from "@/components/stocks/button-submit";
+import InputError from "@/components/shared/input-error";
+import ButtonSubmit from "@/components/shared/button-submit";
 import {toast} from 'sonner';
 
 // const initialState = {

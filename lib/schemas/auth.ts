@@ -1,4 +1,4 @@
-import {coerce, object, string} from 'zod';
+import {object, string} from 'zod';
 
 /**
  * @module zod
@@ -13,19 +13,6 @@ import {coerce, object, string} from 'zod';
  * email: z.string().email("Invalid email address"),})
  *```
  */
-// Example
-export const createExampleSchema = object({
-    name: string().min(3, "Name must be more than 3 characters"),
-    age: coerce.number().min(0, "Age must be a positive number"),
-    address: string().min(3, "Address must be more than 3 characters"),
-});
-
-export const updateExampleSchema = object({
-    id: coerce.number(),
-    name: string().min(3),
-    age: coerce.number().min(0),
-    address: string().min(3),
-});
 // Register
 export const registerSchema = object({
     name: string().min(3, "Name must be more than 3 characters"),

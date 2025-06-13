@@ -7,9 +7,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import DeleteUser from "@/components/delete-user";
 import HeadingSmall from "@/components/heading-small";
-import InputError from "@/components/stocks/input-error";
+import InputError from "@/components/shared/input-error";
 import { updateProfile } from "@/actions/settings.action";
-import ButtonSubmit from "@/components/stocks/button-submit";
+import ButtonSubmit from "@/components/shared/button-submit";
 
 export default function ProfilePage() {
   const { data: session, update } = useSession();

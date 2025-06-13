@@ -3,10 +3,10 @@
 import {createExample} from '@/actions/example.action';
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
-import ButtonSubmit from "@/components/stocks/button-submit";
+import ButtonSubmit from "@/components/shared/button-submit";
 import {useActionState, useEffect} from 'react';
 import {useRouter} from 'next/navigation';
-import InputError from "@/components/stocks/input-error";
+import InputError from "@/components/shared/input-error";
 
 export function CreateExampleForm() {
     const router = useRouter();

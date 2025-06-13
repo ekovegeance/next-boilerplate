@@ -9,9 +9,9 @@ import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
 import {Label} from '@/components/ui/label';
 import {Example} from "@prisma/client";
-import InputError from "@/components/stocks/input-error";
+import InputError from "@/components/shared/input-error";
 import {toast} from "sonner";
-import ButtonSubmit from "@/components/stocks/button-submit";
+import ButtonSubmit from "@/components/shared/button-submit";
 
 export default function EditExampleDialog({example}: { example: Example }) {
     const router = useRouter();

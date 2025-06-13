@@ -6,7 +6,7 @@ import Link from "next/link";
 import {Menu, X} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import {useSession} from "next-auth/react";
-import NavUserSkeleton from "@/components/stocks/nav-user-skeleton";
+import NavUserSkeleton from "@/components/shared/nav-user-skeleton";
 import {DropdownMenu, DropdownMenuContent, DropdownMenuTrigger,} from "@/components/ui/dropdown-menu";
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import {UserMenuContent} from "@/components/user-menu-content";

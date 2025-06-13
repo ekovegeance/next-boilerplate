@@ -7,7 +7,7 @@ import {AuthError} from "next-auth";
 import {signIn, signOut} from "@/auth";
 import {redirect} from "next/navigation";
 import {revalidatePath} from "next/cache";
-import {registerSchema, loginSchema, forgotPasswordSchema} from "@/lib/definitions";
+import {registerSchema, loginSchema, forgotPasswordSchema} from "@/lib/schemas/auth";
 
 
 /**
@@ -68,8 +68,6 @@ export const loginCredentials = async (prevState: unknown, formData: FormData) =
         if (error instanceof AuthError) {
             // @ts-ignore
             switch (error.type) {
-                case "CredentialsSigning":
-                    return {message: "Invalid credentials"};
                 default:
                     return {message: "An error occurred while signing in."};
             }

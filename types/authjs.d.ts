@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { type DefaultSession } from "next-auth";
-import { JWT } from "next-auth/jwt";
 
-
+/**
+ * Type definitions for NextAuth.js with custom user properties.
+ * @see https://authjs.dev/getting-started/typescript
+ */
 declare module "next-auth" {
     interface User {
         id: string;
