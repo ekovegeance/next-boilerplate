@@ -60,7 +60,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         session({ session, token }) {
             if (session.user) {
                 session.user.id = token.sub!;
-                session.user.avatar = token.avatar ?? '';
+                session.user.avatar = token.avatar as string;
                 session.user.email = token.email ?? '';
             }
             return session;

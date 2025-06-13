@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { type DefaultSession } from "next-auth";
+import { type DefaultSession, Session } from "next-auth";
 
 /**
  * Type definitions for NextAuth.js with custom user properties.
