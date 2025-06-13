@@ -36,7 +36,7 @@ Modern Javascript Stack
 - [Next.js App Router](https://nextjs.org/docs/app/building-your-application) - learn about Next.js features and API.
 - [Prisma ORM](https://www.prisma.io/docs/guides/nextjs) - PostgreSQL
 - [Auth JS](https://authjs.dev/getting-started) - Credentials Providers
-- [Dependencies/ third party library](https://github.com/ekovegeance/Fullstack-Nextjs-Templates/blob/main/package.json)
+- [Dependencies/ third-party library](https://github.com/ekovegeance/next-boilerplate/blob/main/package.json)
 
 With shadcn/ui [Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.](https://ui.shadcn.com/) 
 Generate UI [v0](https://v0.dev/https://v0.dev/)

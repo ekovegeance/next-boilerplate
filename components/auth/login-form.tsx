@@ -11,10 +11,10 @@ import {useSearchParams} from "next/navigation";
 import {TriangleAlert} from "lucide-react";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
-import InputError from "@/components/stocks/input-error";
+import InputError from "@/components/shared/input-error";
 import {loginCredentials} from "@/actions/auth.action";
-import ButtonSubmit from "@/components/stocks/button-submit";
-import InputShowPassword from '@/components/stocks/input-show-password';
+import ButtonSubmit from "@/components/shared/button-submit";
+import InputShowPassword from '@/components/shared/input-show-password';
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert";
 
 

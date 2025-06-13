@@ -1,5 +1,5 @@
 
-// types/user.d.ts
+// types/user.ts
 export interface User {
   id: string;
   username: string | null | undefined;

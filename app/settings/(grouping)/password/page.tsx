@@ -3,11 +3,11 @@
 import React, { useActionState } from "react";
 
 import HeadingSmall from "@/components/heading-small";
-import InputError from "@/components/stocks/input-error";
+import InputError from "@/components/shared/input-error";
 import { updatePassword } from "@/actions/settings.action";
-import ButtonSubmit from "@/components/stocks/button-submit";
-import InputShowPassword from "@/components/stocks/input-show-password";
-import InputStrongPassword from "@/components/stocks/input-strong-password";
+import ButtonSubmit from "@/components/shared/button-submit";
+import InputShowPassword from "@/components/shared/input-show-password";
+import InputStrongPassword from "@/components/shared/input-strong-password";
 
 export default function PasswordPage() {
   const [state, action, pending] = useActionState(

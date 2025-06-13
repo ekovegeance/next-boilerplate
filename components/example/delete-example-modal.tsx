@@ -7,7 +7,7 @@ import {deleteExample} from '@/actions/example.action';
 import {Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger,} from '@/components/ui/dialog';
 import {Button} from '@/components/ui/button';
 import {toast} from "sonner";
-import ButtonSubmit from "@/components/stocks/button-submit";
+import ButtonSubmit from "@/components/shared/button-submit";
 
 // const initialState = {success: false, error: null};
 export default function DeleteExampleDialog({exampleId}: { exampleId: string }) {
