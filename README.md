@@ -12,18 +12,18 @@ vi .env
 ```
 Run local development server:
 ```bash
-npm run dev
+pnpm dev
 ```
 Migrate database
 ```bash
-npm run db:migrate
+pnpm run db:migrate
 ```
 ```bash
-npm run db:studio
+pnpm run db:studio
 ```
 Database seeding
 ```bash
-npm run db:seed
+pnpm run db:seed
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. And see [Documentation](https://github.com/ekovegeance/Fullstack-Nextjs-Templates/blob/main/DOCS.md)
