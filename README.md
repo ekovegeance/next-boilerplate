@@ -26,8 +26,8 @@ Database seeding
 pnpm run db:seed
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. And see [Documentation](https://github.com/ekovegeance/Fullstack-Nextjs-Templates/blob/main/DOCS.md)
-
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Use [Style Guide](https://docs-ekovegeance.vercel.app/styleguide/coding-standards/nextjs) for Consistent Development 
 
 ## Tech Stack
 
