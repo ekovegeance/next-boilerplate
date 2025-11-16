@@ -1,4 +1,4 @@
-# Next Boilerplate
+![img](https://github.com/ekovegeance/next-boilerplate/blob/main/next-boilerplate.png)
 
 ## Getting Started
 
