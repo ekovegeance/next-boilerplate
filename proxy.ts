@@ -1,4 +1,4 @@
-import { auth as middleware } from '@/auth';
+import { auth as proxy } from '@/auth';
 
 const protectedResources = [
     "/dashboard",
@@ -7,7 +7,7 @@ const protectedResources = [
     "/settings/password",
     "/settings/appearance",
 ];
-export default middleware((req) => {
+export default proxy((req) => {
     const isLoggedIn = !!req.auth?.user;
     const pathname = req.nextUrl.pathname;
 

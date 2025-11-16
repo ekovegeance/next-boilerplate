@@ -1,14 +1,14 @@
 {
   "name": "next-boilerplate",
-  "version": "15.3.3",
+  "version": "16.0.3",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "postinstall": "prisma generate",
     "clean": "rm -rf .next",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "info": "next info",
     "db:generate": "prisma generate",
     "db:studio": "prisma studio",
@@ -41,11 +41,11 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.484.0",
-    "next": "15.3.3",
+    "next": "16.0.3",
     "next-auth": "^5.0.0-beta.25",
     "next-themes": "^0.4.6",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "sonner": "^2.0.2",
     "tailwind-merge": "^3.0.2",
     "tw-animate-css": "^1.2.4",
@@ -53,16 +53,15 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.2.0",
     "@types/node": "^20",
-    "@types/react": "19.1.8",
-    "@types/react-dom": "19.1.6",
+    "@types/react": "19.2.5",
+    "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9",
-    "eslint-config-next": "15.3.3",
+    "eslint-config-next": "16.0.3",
     "jsdom": "^26.0.0",
     "prisma": "5.19.1",
     "tailwindcss": "^4",
@@ -71,8 +70,10 @@
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.9"
   },
-  "overrides": {
-    "@types/react": "19.1.8",
-    "@types/react-dom": "19.1.6"
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.2.5",
+      "@types/react-dom": "19.2.3"
+    }
   }
 }
